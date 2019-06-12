@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 
+# concatenate some images (across rows)
 PIC_NUM = 3
 FilePATH = r'D:\OneDrive\Lab\Results\chanllenge'
 imgs = []
