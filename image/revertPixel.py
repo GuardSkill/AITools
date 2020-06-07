@@ -2,8 +2,8 @@ import random
 from PIL import Image,ImageOps
 from glob import glob
 #str1='E:/PyProjects/pytorch-inpainting-with-partial-conv-master/mask/NVDIA_mask_dataset'
-str1='E:/Dataset/sgmt_box/**'
-mask_paths = glob('{:s}/*.jpg'.format(str1))
+str1='E://mask'
+mask_paths = glob('{:s}/*.png'.format(str1))
 N_mask = len(mask_paths)
 i=1
 for mask_path in mask_paths:
