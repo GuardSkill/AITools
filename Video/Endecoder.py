@@ -6,8 +6,10 @@ import os
 import cv2
 import os
 
-pathIn = '/home/sobey/Dataset/Material/Video/Material1/画质受损一般_output/Out/'
-pathOut = '/home/sobey/Dataset/Material/Video/Material1/video_output/a.avi'
+# pathIn = '/home/sobey/Dataset/Material/Video/Material1/画质受损一般_output/Out/'
+pathIn = '/home/sobey/PycharmProjects/AtomProjects/smart_g_video_inpainting_sobey/app/test_clip/output'
+pathOut= '/home/sobey/PycharmProjects/AtomProjects/smart_g_video_inpainting_sobey/app/test_clip/text1.mp4'
+# pathOut = '/home/sobey/Dataset/Material/Video/Material1/video_output/a.avi'
 
 def encoder():
     fps = 25
@@ -15,11 +17,11 @@ def encoder():
     files = [f for f in os.listdir(pathIn) if isfile(join(pathIn, f))]
     # for sorting the file names properly
     # print(files[0][5:][:-4])
-    files.sort(key=lambda x: int(x[5:-4]))
+    files.sort(key=lambda x: int(x[:-4]))
 
 
     for i in range(len(files)):
-        filename = pathIn + files[i]
+        filename = os.path.join(pathIn , files[i])
         # reading each files
         img = cv2.imread(filename)
         height, width, layers = img.shape
@@ -27,7 +29,8 @@ def encoder():
 
         # inserting the frames into an image array
         frame_array.append(img)
-    out = cv2.VideoWriter(pathOut, cv2.VideoWriter_fourcc(*'DIVX'), fps, size)
+    # out = cv2.VideoWriter(pathOut, cv2.VideoWriter_fourcc(*'DIVX'), fps, size)
+    out = cv2.VideoWriter(pathOut, cv2.VideoWriter_fourcc(*"mp4v"), fps, size)
     for i in range(len(frame_array)):
         # writing to a image array
         out.write(frame_array[i])
@@ -59,4 +62,4 @@ def read_video():
         count += 1
 
 if __name__=='__main__':
-    read_video()
+    encoder()
