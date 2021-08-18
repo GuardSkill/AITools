@@ -8,7 +8,9 @@ import os
 
 # pathIn = '/home/sobey/Dataset/Material/Video/Material1/画质受损一般_output/Out/'
 pathIn = '/home/sobey/PycharmProjects/AtomProjects/smart_g_video_inpainting_sobey/app/test_clip/output'
-pathOut= '/home/sobey/PycharmProjects/AtomProjects/smart_g_video_inpainting_sobey/app/test_clip/text1.mp4'
+# pathIn='/home/sobey/Dataset/Material/Video/字幕区域修复/红色底板/'
+# pathOut='/home/sobey/Dataset/Material/Video/字幕区域修复/红色底板.mp4'
+pathOut= '/home/sobey/PycharmProjects/AtomProjects/smart_g_video_inpainting_sobey/app/test_clip/decap_DSTT_cubic.mp4'
 # pathOut = '/home/sobey/Dataset/Material/Video/Material1/video_output/a.avi'
 
 def encoder():
