@@ -236,13 +236,18 @@ class Vec2Patch(nn.Module):
         c_out = reduce((lambda x, y: x * y), kernel_size) * channel
         self.embedding = nn.Linear(hidden, c_out)
         self.to_patch = torch.nn.Fold(output_size=output_size, kernel_size=kernel_size, stride=stride, padding=padding)
+        self.output_size=output_size
+        self.kernel_size=kernel_size
+        self.stride=stride
+        self.padding=padding
         h, w = output_size
 
     def forward(self, x):
         feat = self.embedding(x)
         b, n, c = feat.size()
         feat = feat.permute(0, 2, 1)
-        feat = self.to_patch(feat)
+        # feat = self.to_patch(feat)
+        feat= F.fold(input=feat,output_size= self.output_size,kernel_size=self.kernel_size, stride=self.stride, padding=self.padding)
         return feat
 
 

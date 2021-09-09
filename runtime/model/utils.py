@@ -1,12 +1,8 @@
-import matplotlib.patches as patches
-from matplotlib.path import Path
 import os
-import sys
+
 import io
 import cv2
-import time
-import argparse
-import shutil
+
 import random
 import zipfile
 from glob import glob
