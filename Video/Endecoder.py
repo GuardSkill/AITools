@@ -50,6 +50,12 @@ def create_dir(dir):
 
 def read_video():
     vidcap = cv2.VideoCapture(in_video)
+    if cap.isOpened():
+        width  = vidcap.get(cv2.CAP_PROP_FRAME_WIDTH)   # float `width`
+        height = vidcap.get(cv2.CAP_PROP_FRAME_HEIGHT)  # float `height`
+        fps = vidcap.get(cv2.CAP_PROP_FPS) # float `fps`
+    size=(int(width),int(height))
+    # get size
     success, image = vidcap.read()
     count = 0
     # dir_name='./images/'
