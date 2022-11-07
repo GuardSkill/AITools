@@ -7,20 +7,24 @@ import cv2
 import os
 
 # pathIn = '/home/sobey/Dataset/Material/Video/Material1/画质受损一般_output/Out/'
-pathIn = '/Disk1/Projects/AtomProjects/smart_g_video_inpainting_sobey/app/test_clip/output'
+pathIn = r'\\192.168.31.10\AlgorithmData\Data\ZNJT\ZhongChe_ChengKeXingWei\train_images\Smoking_label\Smoking'
 # pathIn='/home/sobey/Dataset/Material/Video/字幕区域修复/红色底板/'
 # pathOut='/home/sobey/Dataset/Material/Video/字幕区域修复/红色底板.mp4'
-pathOut= '/Disk1/Projects/AtomProjects/smart_g_video_inpainting_sobey/app/test_clip/decap_DSTT_DBNet.mp4'
+pathOut= r'\\192.168.31.10\AlgorithmData\Data\ZNJT\ZhongChe_ChengKeXingWei\train_images/all_fire.mp4'
 # pathOut = '/home/sobey/Dataset/Material/Video/Material1/video_output/a.avi'
 
 def encoder():
     fps = 25
     frame_array = []
-    files = [f for f in os.listdir(pathIn) if isfile(join(pathIn, f))]
+    img_postfix=['png','jpg']
+    files = [f for f in os.listdir(pathIn) if isfile(join(pathIn, f)) and f.split('.')[-1] in img_postfix]
     # for sorting the file names properly
     # print(files[0][5:][:-4])
-    files.sort(key=lambda x: int(x[:-4]))
 
+    # files.sort(key=lambda x: int(x[:-4]))       # Sort images to right order for video
+    img=cv2.imread(os.path.join(pathIn , files[0]))
+    height, width, layers = img.shape
+    target_size = (width, height)
 
     for i in range(len(files)):
         filename = os.path.join(pathIn , files[i])
@@ -28,14 +32,16 @@ def encoder():
         img = cv2.imread(filename)
         height, width, layers = img.shape
         size = (width, height)
-
+        if size!=target_size:
+            img=cv2.resize(img,target_size)
         # inserting the frames into an image array
         frame_array.append(img)
     # out = cv2.VideoWriter(pathOut, cv2.VideoWriter_fourcc(*'DIVX'), fps, size)
-    out = cv2.VideoWriter(pathOut, cv2.VideoWriter_fourcc(*"mp4v"), fps, size)
+    out = cv2.VideoWriter(pathOut, cv2.VideoWriter_fourcc(*"mp4v"), fps, target_size)
     for i in range(len(frame_array)):
         # writing to a image array
-        out.write(frame_array[i])
+        for j in range(55):
+            out.write(frame_array[i])
     out.release()
 
 
