@@ -80,7 +80,7 @@ def video_to_images_uniform_cv2(video_file, image_save_path=None, prefix_name=No
     cap.release()
 
 
-def video_to_images_middle_sample_ffmpeg(video_file, image_save_path=None, prefix_name=None,max_save_count_per_video=9):
+def video_to_images_middle_sample_ffmpeg(video_file, image_save_path=None, prefix_name=None,max_save_count_per_video=10):
     '''
     视频文件转图像文件
     :param video_path:

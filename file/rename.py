@@ -12,10 +12,10 @@ Copyright (c) 2022 by Siyuan Li - ZHONGCHAO XINDA, All Rights Reserved.
 #  find . -name "*.jpg" -exec mogrify -format png {} \;
 import os
 import json
-path=r"\\192.168.31.10\AlgorithmData\Data\ZNJT\ShangHai_jcp\LabelData\NeedLabel"
 path=r"\\192.168.31.10\AlgorithmData\Data\ZNJT\ShangHai_jcp\LabelData\20221101_hat_clothes\AllAddLabel"
-
-prefix="NJNHeadCloth20221101_"
+path=r"\\192.168.31.10\AlgorithmData\Data\ZNJT\ZhongChe_ChengKeXingWei\20221107\images6"
+path= r'\\192.168.31.10\AlgorithmData\lisiyuan\Workshed_OD\20221114\Rope_video_images'
+prefix="221114_Ropevideo_"
 postfix=['png','jpg','jpeg']
 
 def listDir(rootDir, image_list, endwith):
@@ -115,6 +115,6 @@ def generate_json_for_allfiles(one_json_path,path):
     f.close()
 
 if __name__ == "__main__":  
-    # rename_allfiles(path,prefix,postfix)
-    rename_allfiles_with_label(path,prefix,postfix)
+    rename_allfiles(path,prefix,postfix)
+    # rename_allfiles_with_label(path,prefix,postfix)
 
